@@ -77,7 +77,9 @@ public class ImageController extends HomeController {
         fileChooser.setTitle("保存图片");
         MyFile.toImageFile(fileChooser);
         String path = fileChooser.showSaveDialog(new Stage()).getAbsolutePath();
-        MyImage.copyImage(imagesFile.listFiles()[now].getPath(), path);
+        if(path != null){
+            MyImage.copyImage(imagesFile.listFiles()[now].getPath(), path);
+        }
     }
 
     public void toNextImage(ActionEvent actionEvent) {
