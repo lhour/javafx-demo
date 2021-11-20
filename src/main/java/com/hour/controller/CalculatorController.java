@@ -162,6 +162,7 @@ public class CalculatorController extends HomeController {
         symble = i;
         hasSymble = true;
         nowNumber = 2;
+        hasPoint = false;
         showText();
     }
 
