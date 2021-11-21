@@ -97,9 +97,11 @@ public class TvController extends HomeController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("打开视频文件");
         MyFile.toMVFile(fileChooser);
-        String now = fileChooser.showOpenDialog(new Stage()).getAbsolutePath();
-        if (now != null) {
+        try{
+            String now = fileChooser.showOpenDialog(new Stage()).getAbsolutePath();
             path.setText(now);
+        } catch (Exception e){
+            System.out.println("关闭了文件选择框");
         }
     }
 

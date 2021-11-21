@@ -76,9 +76,11 @@ public class ImageController extends HomeController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("保存图片");
         MyFile.toImageFile(fileChooser);
-        String path = fileChooser.showSaveDialog(new Stage()).getAbsolutePath();
-        if(path != null){
+        try{
+            String path = fileChooser.showSaveDialog(new Stage()).getAbsolutePath();
             MyImage.copyImage(imagesFile.listFiles()[now].getPath(), path);
+        }catch (Exception e){
+            System.out.println("关闭了文件选择框");
         }
     }
 

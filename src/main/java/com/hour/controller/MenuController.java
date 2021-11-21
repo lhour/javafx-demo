@@ -69,10 +69,13 @@ public class MenuController extends MenuBar {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("添加图片");
         MyFile.toImageFile(fileChooser);
-        String path = fileChooser.showOpenDialog(new Stage()).getAbsolutePath();
-        if(path != null){
+        try{
+            String path = fileChooser.showOpenDialog(new Stage()).getAbsolutePath();
             MyImage.copyImage(path, imagesFile.getPath() + "/" + imagesFile.listFiles().length + ".jpg");
+        } catch (Exception e){
+            System.out.println("关闭了文件选择框");
         }
+
         App.setRoot("image", 600, 450);
     }
 
