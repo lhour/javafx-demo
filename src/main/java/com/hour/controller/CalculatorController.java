@@ -43,8 +43,8 @@ public class CalculatorController extends HomeController {
     public final static int SYMBLE_MULTIPLY = 5;   //乘
     public final static int SYMBLE_DIVIDE = 6;     //除
 
-    public final static int OPERATION_CALCULATE = 0;     // 归零
-    public final static int OPERATION_AC = 0;// 等于号
+    public final static int OPERATION_CALCULATE = 0;     // 等于号
+    public final static int OPERATION_AC = 1;           // 归零
 
     @FXML
     public Button number;
@@ -121,7 +121,7 @@ public class CalculatorController extends HomeController {
         // 数字键绑定监听事件
         for (int i = NUMBER_Point; i <= NUMBER_9; i++) {
             final int finalI = i;
-            numberControls[i].setOnMouseClicked(me -> {
+            numberControls[i + 1].setOnMouseClicked(me -> {
                 pressNumber(finalI);
             });
         }
@@ -179,7 +179,7 @@ public class CalculatorController extends HomeController {
             }
         }
         if (!hasPoint && !hasNumber) {
-            if (i != NUMBER_Point) {
+            if (i == NUMBER_Point) {
                 hasPoint = true;
                 numbers[nowNumber] += ".";
             } else {
